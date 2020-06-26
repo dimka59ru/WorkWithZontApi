@@ -13,6 +13,7 @@ namespace WorkWithZontApi.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly ZontService _zontService;
+        public string Result { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, ZontService zontService)
         {
@@ -20,9 +21,9 @@ namespace WorkWithZontApi.Pages
             _zontService = zontService;
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-
+            Result = await _zontService.GetDevicesAsync();
         }
     }
 }
